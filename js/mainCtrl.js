@@ -20,14 +20,19 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
     .then(function(response) {
       getMessages();
     });
+    $scope.message = "";
   }
 
-
+  function getCookies(){        messageService.getCookies().then(function(response){
+      console.log(response);
+    });
+  }
 
 
   //uncomment this code when your getMessages function is finished
   //This goes and gets new data every second, which mimicking a chat room experience.
   setInterval(function(){
     getMessages();
+    getCookies();
   }, 1500)
 })

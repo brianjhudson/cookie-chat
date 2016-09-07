@@ -5,18 +5,6 @@ angular.module('chatroom').service('messageService', function($http){
   //On the lines below create a getMessages method. This method will retrieve data from the backend.
   //The url for the get request should be 'http://practiceapi.devmounta.in/api/chats'
   //Be sure to return whatever gets returned from $http so you can call .then in your controller.
-  this.getMessages = function() {
-    return $http.get(baseUrl).then(function(results){
-      if (results.status === 200)  {
-        return results.data.reverse();
-      }
-    }, function() {
-      console.log("error: " + results.error)
-    }
-    )
-  };
-
-
   //On the line below create the postMessage method. This method will add data to the backend server.
   //The url for the request needs to be 'http://practiceapi.devmounta.in/api/chats'
   //Because we're making a POST request, we need a way to tell the server the data we want to give it,
@@ -29,8 +17,35 @@ angular.module('chatroom').service('messageService', function($http){
       method: 'POST',
       url: baseUrl,
       data: {"message": myMessage}
+    }).then(function(response) {
+      return response.data;
     });
   }
 
   //getMessages method here
+  this.getMessages = function() {
+    return $http.get(baseUrl).then(function(results){
+      if (results.status === 200)  {
+        return results.data.reverse();
+      }
+    }, function() {
+      console.log("Error: " + results.error)
+    }
+  )
+};
+
+  // postCookie method
+  this.postCookie = function(cookie) {
+    return $http.post("http://practiceapi.devmounta.in/api/cookies", cookie)
+  }
+  this.getCookies = function(cookie) {
+    return $http.get("http://practiceapi.devmounta.in/api/cookies").then(function(response) {
+      if (response.status === 200) {
+        return response.data;
+      }
+    }, function(response){
+      console.log(response.status)
+    })
+  }
+
 });
