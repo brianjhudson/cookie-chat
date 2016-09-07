@@ -19,14 +19,12 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
     messageService.postMessage(message)
     .then(function(response) {
       getMessages();
+      messageService.postCookie($scope.messages[0].cookie);
     });
     $scope.message = "";
   }
 
-  function getCookies(){        messageService.getCookies().then(function(response){
-      console.log(response);
-    });
-  }
+  function getCookies(){messageService.getCookies();}
 
 
   //uncomment this code when your getMessages function is finished

@@ -36,7 +36,7 @@ angular.module('chatroom').service('messageService', function($http){
 
   // postCookie method
   this.postCookie = function(cookie) {
-    return $http.post("http://practiceapi.devmounta.in/api/cookies", cookie)
+    return $http.post("http://practiceapi.devmounta.in/api/cookies", {"cookie": cookie})
   }
   this.getCookies = function(cookie) {
     return $http.get("http://practiceapi.devmounta.in/api/cookies").then(function(response) {
