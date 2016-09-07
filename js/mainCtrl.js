@@ -8,6 +8,7 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
     messageService.getMessages()
       .then(function(response){
           $scope.messages = response;
+
         })
   }
 
