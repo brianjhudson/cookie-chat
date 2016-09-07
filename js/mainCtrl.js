@@ -1,4 +1,6 @@
-angular.module('chatroom').controller('mainCtrl', function($scope, messageService){
+angular.module('chatroom').controller('mainCtrl',
+
+function($scope, messageService){
 
   //In your controller you'll have a getMessages function and a postMessage function, but should be placed on $scope.
 
@@ -8,7 +10,7 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
     messageService.getMessages()
       .then(function(response){
           $scope.messages = response;
-
+          console.log($scope.messages);
         })
   }
 
