@@ -8,15 +8,13 @@ angular.module('chatroom').service('messageService', function($http){
   this.getMessages = function() {
     return $http.get(baseUrl).then(function(results){
       if (results.status === 200)  {
-        console.log(results.data)
-        return results.data
-
+        return results.data.reverse();
       }
     }, function() {
       console.log("error: " + results.error)
     }
-  )
-  }
+    )
+  };
 
 
   //On the line below create the postMessage method. This method will add data to the backend server.
@@ -26,7 +24,13 @@ angular.module('chatroom').service('messageService', function($http){
   //Also, remember that $http returns a promise. So if you return the whole $http call (return $http(...)), you can then use .then in your controller.
 
   //postMessage method here
-
+  this.postMessage = function(myMessage) {
+    return $http({
+      method: 'POST',
+      url: baseUrl,
+      data: {"message": myMessage}
+    });
+  }
 
   //getMessages method here
 });
