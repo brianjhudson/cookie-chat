@@ -42,7 +42,6 @@ h1 {
   text-align: center;
 }
 p{
-  position: relative;
   width: 70%;
   margin: 3px auto;
   padding: 20px;
@@ -52,10 +51,8 @@ p{
   /*border: 1px solid #ccc;*/
 }
 .time {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  font-style: italic;
-  font-size: .75em;
-  color: #ccc;
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  color: #000;
 }

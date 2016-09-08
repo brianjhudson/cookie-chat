@@ -14,7 +14,7 @@
       </form>
       <input class="form-control text-box" type="text" ng-model="searchValue" placeholder="Search posts...">
       <div class="messages-container">
-        <p ng-repeat="message in messages | filter: searchValue | limitTo: 50">{{ message.message }}<span class="time">{{message.createdAt | amCalendar }}</span</p>
+        <p ng-repeat="message in messages | filter: searchValue | limitTo: 50"><span class="time">{{message.createdAt | amCalendar }}</span>{{ message.message }}</p>
         <time></time>
       </div>
     </div>
